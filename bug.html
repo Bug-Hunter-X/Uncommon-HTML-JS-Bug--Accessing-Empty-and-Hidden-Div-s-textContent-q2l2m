@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is initially visible.
+  </div>
+  <button onclick="myFunction()">Click Me</button>
+
+  <script>
+    function myFunction() {
+      document.getElementById("myDiv").innerHTML = ""; // Clears the div
+      document.getElementById("myDiv").style.display = "none"; // Hides the div
+      // The bug is that the below line tries to access a now empty and hidden div.
+      // This can lead to unexpected behavior or errors depending on the browser.
+      alert(document.getElementById("myDiv").textContent); 
+    }
+  </script>
+</body>
+</html>
